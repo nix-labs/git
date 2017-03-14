@@ -62,6 +62,8 @@ sudo git config --global user.name "developer"
 sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 ## Permissions
+sudo chmod 777 /home/dev/webroot/shop/index.php 
+sudo chmod 777 /home/dev/webroot/shop/admin/index.php
 sudo chmod 777 /home/dev/webroot/shop/config.php 
 sudo chmod 777 /home/dev/webroot/shop/admin/config.php
 sudo chmod 777 /home/dev/webroot/shop/image
