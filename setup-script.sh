@@ -69,17 +69,6 @@ sudo find /home/dev/git -type d -exec chmod 2750 {} \;
 sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 sed -i 's/www-data/dev/g' /etc/apache2/envvars
 
-#sudo chmod 777 /home/dev/webroot/shop/index.php
-#sudo chmod 777 /home/dev/webroot/shop/admin/index.php
-#sudo chmod 777 /home/dev/webroot/shop/config.php
-#sudo chmod 777 /home/dev/webroot/shop/admin/config.php
-#sudo chmod 777 /home/dev/webroot/shop/image
-#sudo chmod 777 /home/dev/webroot/shop/image/cache
-#sudo chmod 777 /home/dev/webroot/shop/image/catalog
-#sudo chmod 777 /home/dev/webroot/shop/system/storage/cache
-#sudo chmod 777 /home/dev/webroot/shop/system/storage/logs
-#sudo chmod 777 /home/dev/webroot/shop/system/storage/download
-#sudo chmod 777 /home/dev/webroot/shop/system/storage/upload
-#sudo chmod 777 /home/dev/webroot/shop/system/storage/modification
+#sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 sudo reboot
