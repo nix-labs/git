@@ -67,7 +67,7 @@ sudo find /home/dev/webroot -type d -exec chmod 2750 {} \;
 sudo find /home/dev/webroot -type f -exec chmod 0644 {} \;
 sudo find /home/dev/git -type d -exec chmod 2750 {} \;
 sudo find /home/dev/git -type f -exec chmod 0644 {} \;
-sed -i 's/www-data/dev/g' /etc/apache2/envvars
+sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
 
 #sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
