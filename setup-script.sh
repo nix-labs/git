@@ -8,7 +8,7 @@
 #sudo ./setup-script
 
 ## Repositories
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+#sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 
 ## Updates
 sudo apt-get -y update
@@ -20,7 +20,7 @@ sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_aga
 
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
-sudo apt-get install -y chromium-browser apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl sublime-text-installer
+sudo apt-get install -y chromium-browser apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl eclipse
 
 ## Configs
 
