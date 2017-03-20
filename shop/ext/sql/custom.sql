@@ -1,0 +1,1 @@
+INSERT INTO `event` (`event_id`, `code`, `trigger`, `action`) VALUES (2, 'enquiry', 'catalog/controller/common/footer/after', 'module/module/remove_powered_by');
