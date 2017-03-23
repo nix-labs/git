@@ -69,6 +69,8 @@ sudo find /home/dev/git -type d -exec chmod 2750 {} \;
 sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
 
-#sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
+sudo ln -s /home/dev/webroot/shop/ext/admin/controller/enquiry.php /home/dev/webroot/shop/admin/controller/extension/module/enquiry.php
+sudo ln -s /home/dev/webroot/shop/ext/admin/language/enquiry.php /home/dev/webroot/shop/admin/language/en-gb/extension/module/enquiry.php
+sudo ln -s /home/dev/webroot/shop/ext/catalog/controller/enquiry.php /home/dev/webroot/shop/catalog/controller/extension/module/enquiry.php
 
 sudo reboot
