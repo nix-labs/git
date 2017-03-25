@@ -1,10 +1,16 @@
 <?php
 
 class ControllerExtensionModuleEnquiry extends Controller {
+	
+	public function checkout_cart_before($route, $args) {
+		
+	}
+	
+	public function checkout_cart_after($route, $args, &$output) {
+		
+	}
 
 	public function checkout_checkout_before(&$route, $args) {
-		
-		//echo $this->session->data['currency'];
 		
 		//Shipping Address
 		$this->session->data['shipping_address']['firstname'] = '';
@@ -68,6 +74,10 @@ class ControllerExtensionModuleEnquiry extends Controller {
 		$route = 'checkout/confirm';
 		$action = new Action($route);
 		$result = $action->execute($this->registry, array($args));
+		
+		$route = 'checkout/success';
+		$action = new Action($route);
+		$result = $action->execute($this->registry, array($args));
 
 		if ($result) {
 			return $result;
@@ -75,6 +85,18 @@ class ControllerExtensionModuleEnquiry extends Controller {
 			$this->response->output();
 			exit;
 		}
+	}
+	
+	public function checkout_checkout_after(&$route, $args, &$output) {
+
+	}
+	
+	public function checkout_confirm_before(&$route, $args) {
+
+	}
+	
+	public function checkout_confirm_after(&$route, $args, &$output) {
+
 	}
 
 }
