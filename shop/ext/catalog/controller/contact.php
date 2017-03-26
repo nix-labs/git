@@ -18,24 +18,24 @@ class ControllerExtensionTotalContact extends Controller {
 
 			$mail->setTo($this->config->get('config_email'));
 			$mail->setFrom($this->request->post['email']);
-			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
+			$mail->setSender(html_entity_decode($this->request->post['firstname'], ENT_QUOTES, 'UTF-8'));
+			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['firstname']), ENT_QUOTES, 'UTF-8'));
 			$mail->setText($this->request->post['enquiry']);
 			$mail->send();
 
-			$this->response->redirect($this->url->link('extension/total/contact/success'));
+			$this->load->controller('checkout/confirm');
 		}
 
 		$data['text_contact'] = $this->language->get('text_contact');
 
-		$data['entry_name'] = $this->language->get('entry_name');
+		$data['entry_firstname'] = $this->language->get('entry_firstname');
 		$data['entry_email'] = $this->language->get('entry_email');
 		$data['entry_enquiry'] = $this->language->get('entry_enquiry');
 
-		if (isset($this->error['name'])) {
-			$data['error_name'] = $this->error['name'];
+		if (isset($this->error['firstname'])) {
+			$data['error_firstname'] = $this->error['firstname'];
 		} else {
-			$data['error_name'] = '';
+			$data['error_firstname'] = '';
 		}
 
 		if (isset($this->error['email'])) {
@@ -54,10 +54,10 @@ class ControllerExtensionTotalContact extends Controller {
 
 		$data['action'] = $this->url->link('checkout/cart', '', true);
 
-		if (isset($this->request->post['name'])) {
-			$data['name'] = $this->request->post['name'];
+		if (isset($this->request->post['firstname'])) {
+			$data['firstname'] = $this->request->post['firstname'];
 		} else {
-			$data['name'] = $this->customer->getFirstName();
+			$data['firstname'] = $this->customer->getFirstName();
 		}
 
 		if (isset($this->request->post['email'])) {
@@ -83,8 +83,8 @@ class ControllerExtensionTotalContact extends Controller {
 	}
 
 	protected function validate() {
-		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
-			$this->error['name'] = $this->language->get('error_name');
+		if ((utf8_strlen($this->request->post['firstname']) < 3) || (utf8_strlen($this->request->post['firstname']) > 32)) {
+			$this->error['firstname'] = $this->language->get('error_firstname');
 		}
 
 		if (!filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
@@ -105,40 +105,5 @@ class ControllerExtensionTotalContact extends Controller {
 		}
 
 		return !$this->error;
-	}
-
-	public function success() {
-		$this->load->language('extension/total/contact');
-
-		$this->document->setTitle($this->language->get('heading_title'));
-
-		$data['breadcrumbs'] = array();
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
-		);
-
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('extension/total/contact')
-		);
-
-		$data['heading_title'] = $this->language->get('heading_title');
-
-		$data['text_message'] = $this->language->get('text_success');
-
-		$data['button_continue'] = $this->language->get('button_continue');
-
-		$data['continue'] = $this->url->link('common/home');
-
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = $this->load->controller('common/column_right');
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
-
-		$this->response->setOutput($this->load->view('common/success', $data));
 	}
 }
