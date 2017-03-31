@@ -7,9 +7,6 @@
 #sudo chmod 777 setup-script.sh
 #sudo ./setup-script
 
-## Repositories
-#sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-
 ## Updates
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -20,7 +17,7 @@ sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_aga
 
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
-sudo apt-get install -y chromium-browser apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl eclipse
+sudo apt-get install -y chromium-browser apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl
 
 ## Configs
 
@@ -54,7 +51,7 @@ sudo echo "FLUSH PRIVILEGES" | mysql -uroot -proot
 sudo php5enmod mcrypt
 
 #Git
-sudo git config --global user.email "dev@sandbox"
+sudo git config --global user.email "dev@ubuntu"
 sudo git config --global user.name "developer"
 
 #Opencart
@@ -68,9 +65,5 @@ sudo find /home/dev/webroot -type f -exec chmod 0644 {} \;
 sudo find /home/dev/git -type d -exec chmod 2750 {} \;
 sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
-
-sudo ln -s /home/dev/webroot/shop/ext/admin/controller/enquiry.php /home/dev/webroot/shop/admin/controller/extension/module/enquiry.php
-sudo ln -s /home/dev/webroot/shop/ext/admin/language/enquiry.php /home/dev/webroot/shop/admin/language/en-gb/extension/module/enquiry.php
-sudo ln -s /home/dev/webroot/shop/ext/catalog/controller/enquiry.php /home/dev/webroot/shop/catalog/controller/extension/module/enquiry.php
 
 sudo reboot
