@@ -12,12 +12,12 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 
 ## Params
-sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password root'
-sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password root'
+sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password password root'
+sudo debconf-set-selections <<< 'mysql-server-5.6 mysql-server/root_password_again password root'
 
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
-sudo apt-get install -y chromium-browser apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl
+sudo apt-get install -y chromium-browser apache2 mysql-server-5.6 mysql-client-5.6 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl
 
 ## Configs
 
@@ -42,9 +42,9 @@ sudo a2enmod rewrite
 
 #MySQL
 sudo echo "DROP DATABASE IF EXISTS webshopdb" | mysql -uroot -proot
-sudo echo "CREATE USER 'webadmin'@'localhost' IDENTIFIED BY 'webadmin'" | mysql -uroot -proot
+sudo echo "CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY 'dbadmin'" | mysql -uroot -proot
 sudo echo "CREATE DATABASE webshopdb" | mysql -uroot -proot
-sudo echo "GRANT ALL PRIVILEGES ON webshopdb.* TO 'webadmin'@'localhost'" | mysql -uroot -proot
+sudo echo "GRANT ALL PRIVILEGES ON webshopdb.* TO 'dbadmin'@'localhost'" | mysql -uroot -proot
 sudo echo "FLUSH PRIVILEGES" | mysql -uroot -proot
 
 #PHP
