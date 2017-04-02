@@ -17,8 +17,7 @@ sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_aga
 
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
-sudo apt-get install -y chromium-browser default-jdk apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl eclipse maven eclipse-egit mysql-workbench
-# install PDT and m2e manually
+sudo apt-get install -y chromium-browser default-jdk apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl eclipse maven eclipse-egit mysql-workbench git
 
 ## Configs
 
@@ -60,6 +59,7 @@ sudo git config --global user.email "dev@ubuntu"
 sudo git config --global user.name "developer"
 
 #Opencart
+sudo git clone https://github.com/nix-labs/git.git
 sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 ## Permissions
