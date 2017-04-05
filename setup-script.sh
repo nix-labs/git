@@ -1,15 +1,14 @@
 #!/bin/bash
 
 ## Init
-#sudo apt-get -y install git
-#sudo git clone https://github.com/nix-labs/git.git
-#cd git
+#wget https://goo.gl/z3uKuj -O setup-script
 #sudo chmod 777 setup-script.sh
 #sudo ./setup-script
 
 ## Updates
 sudo apt-get -y update
 sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
 
 ## Params
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password root'
@@ -20,6 +19,9 @@ sudo apt-get install -y --no-install-recommends ubuntu-desktop
 sudo apt-get install -y chromium-browser default-jdk apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl eclipse maven eclipse-egit mysql-workbench git
 
 ## Configs
+
+#Ubuntu
+sudo xandr -s 1440x900
 
 #Apache
 sudo echo "ServerName localhost">>/etc/apache2/apache2.conf
@@ -57,9 +59,9 @@ sudo php5enmod mcrypt
 #Git
 sudo git config --global user.email "dev@ubuntu"
 sudo git config --global user.name "developer"
+sudo git clone https://github.com/nix-labs/git.git
 
 #Opencart
-sudo git clone https://github.com/nix-labs/git.git
 sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 ## Permissions
@@ -83,5 +85,11 @@ ln -s /home/dev/webroot/shop/ext/catalog/view/xheader.tpl /home/dev/webroot/shop
 ln -s /home/dev/webroot/shop/ext/catalog/view/xfooter.tpl /home/dev/webroot/shop/catalog/view/theme/default/template/common/xfooter.tpl
 ln -s /home/dev/webroot/shop/ext/catalog/language/xheader.php /home/dev/webroot/shop/catalog/language/en-gb/common/xheader.php
 ln -s /home/dev/webroot/shop/ext/catalog/language/xfooter.php /home/dev/webroot/shop/catalog/language/en-gb/common/xfooter.php
+
+#Cleanup
+sudo apt-get -f install
+sudo apt-get autoremove
+sudo apt-get -y autoclean
+sudo apt-get -y clean
 
 sudo reboot
