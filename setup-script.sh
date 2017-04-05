@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ## Init
-#wget https://goo.gl/z3uKuj -O setup-script
+#wget https://goo.gl/z3uKuj -O setup-script.sh
 #sudo chmod 777 setup-script.sh
-#sudo ./setup-script
+#sudo ./setup-script.sh
 
 ## Updates
 sudo apt-get -y update
@@ -64,6 +64,11 @@ sudo git clone https://github.com/nix-labs/git.git
 #Opencart
 sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
+#JShop
+cd /home/dev/git/jshop
+mvn clean eclipse:clean eclipse:eclipse -Dwtpversion=2.0
+mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
+
 ## Permissions
 sudo chown -R dev:dev /home/dev/webroot
 sudo chown -R dev:dev /home/dev/git
@@ -91,5 +96,6 @@ sudo apt-get -f install
 sudo apt-get autoremove
 sudo apt-get -y autoclean
 sudo apt-get -y clean
+rm /home/dev/setup-script.sh
 
 sudo reboot
