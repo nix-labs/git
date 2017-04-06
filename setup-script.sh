@@ -66,7 +66,7 @@ sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 #JShop
 cd /home/dev/git/jshop
-mvn clean eclipse:clean eclipse:eclipse -Dwtpversion=2.0
+mvn eclipse:eclipse -Dwtpversion=2.0
 mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
 
 ## Permissions
