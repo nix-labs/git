@@ -16,12 +16,9 @@ sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_aga
 
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
-sudo apt-get install -y chromium-browser default-jdk apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl eclipse maven eclipse-egit mysql-workbench git
+sudo apt-get install -y default-jdk chromium-browser apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl eclipse maven eclipse-egit mysql-workbench git
 
 ## Configs
-
-#Ubuntu
-sudo xrandr -s 1440x900
 
 #Apache
 sudo echo "ServerName localhost">>/etc/apache2/apache2.conf
@@ -66,12 +63,14 @@ sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 #JShop
 cd /home/dev/git/jshop
+mkdir /home/dev/workspace
 sudo mvn eclipse:eclipse -Dwtpversion=2.0
-sudo mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
+mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
 
 ## Permissions
 sudo chown -R dev:dev /home/dev/webroot
 sudo chown -R dev:dev /home/dev/git
+sudo chown -R dev:dev /home/dev/workspace
 sudo find /home/dev/webroot -type d -exec chmod 2750 {} \;
 sudo find /home/dev/webroot -type f -exec chmod 0644 {} \;
 sudo find /home/dev/git -type d -exec chmod 2750 {} \;
@@ -90,6 +89,9 @@ ln -s /home/dev/webroot/shop/ext/catalog/view/xheader.tpl /home/dev/webroot/shop
 ln -s /home/dev/webroot/shop/ext/catalog/view/xfooter.tpl /home/dev/webroot/shop/catalog/view/theme/default/template/common/xfooter.tpl
 ln -s /home/dev/webroot/shop/ext/catalog/language/xheader.php /home/dev/webroot/shop/catalog/language/en-gb/common/xheader.php
 ln -s /home/dev/webroot/shop/ext/catalog/language/xfooter.php /home/dev/webroot/shop/catalog/language/en-gb/common/xfooter.php
+
+#Ubuntu
+sudo xrandr -s 1440x900
 
 #Cleanup
 sudo apt-get -f install
