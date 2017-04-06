@@ -21,7 +21,7 @@ sudo apt-get install -y chromium-browser default-jdk apache2 mysql-server-5.5 my
 ## Configs
 
 #Ubuntu
-sudo xandr -s 1440x900
+sudo xrandr -s 1440x900
 
 #Apache
 sudo echo "ServerName localhost">>/etc/apache2/apache2.conf
@@ -66,8 +66,8 @@ sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 #JShop
 cd /home/dev/git/jshop
-mvn eclipse:eclipse -Dwtpversion=2.0
-mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
+sudo mvn eclipse:eclipse -Dwtpversion=2.0
+sudo mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
 
 ## Permissions
 sudo chown -R dev:dev /home/dev/webroot
