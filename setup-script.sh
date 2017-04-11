@@ -21,22 +21,22 @@ sudo apt-get install -y default-jdk chromium-browser apache2 mysql-server-5.5 my
 ## Configs
 
 #Apache
-sudo echo "ServerName localhost">>/etc/apache2/apache2.conf
+#sudo echo "ServerName localhost">>/etc/apache2/apache2.conf
 mkdir /home/dev/webroot
 mkdir /home/dev/workspace
 
-VHOST=$(cat <<EOF
-<VirtualHost *:80>
-    DocumentRoot /home/dev/webroot
-    <Directory /home/dev/webroot/>
-		Options Indexes FollowSymLinks
-		AllowOverride None
-		Require all granted
-	</Directory>
-</VirtualHost>
-EOF
-)
-echo "${VHOST}" > /etc/apache2/sites-available/000-default.conf
+#VHOST=$(cat <<EOF
+#<VirtualHost *:80>
+#    DocumentRoot /home/dev/webroot
+#    <Directory /home/dev/webroot/>
+#		Options Indexes FollowSymLinks
+#		AllowOverride None
+#		Require all granted
+#	</Directory>
+#</VirtualHost>
+#EOF
+#)
+#echo "${VHOST}" > /etc/apache2/sites-available/000-default.conf
 
 sudo a2enmod rewrite
 
@@ -59,24 +59,21 @@ sudo git config --global user.email "dev@ubuntu"
 sudo git config --global user.name "developer"
 sudo git clone https://github.com/nix-labs/git.git
 
-#Opencart
-sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
-
-#JShop
-cd /home/dev/git/jshop
-sudo mvn eclipse:eclipse -Dwtpversion=2.0
-mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
-
 ## Permissions
-#sudo chown -R dev:dev /home/dev/webroot
-#sudo chown -R dev:dev /home/dev/git
-#sudo chown -R dev:dev /home/dev/workspace
 sudo chown -R dev:dev /home/dev
-sudo find /home/dev/webroot -type d -exec chmod 2750 {} \;
-sudo find /home/dev/webroot -type f -exec chmod 0644 {} \;
+#sudo find /home/dev/webroot -type d -exec chmod 2750 {} \;
+#sudo find /home/dev/webroot -type f -exec chmod 0644 {} \;
 sudo find /home/dev/git -type d -exec chmod 2750 {} \;
 sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
+
+#JShop
+cd /home/dev/git/jshop
+mvn eclipse:eclipse -Dwtpversion=2.0
+mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
+
+#Opencart
+sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 ln -s /home/dev/webroot/shop/ext/admin/controller/enquiry.php /home/dev/webroot/shop/admin/controller/extension/module/enquiry.php
 ln -s /home/dev/webroot/shop/ext/admin/language/enquiry.php /home/dev/webroot/shop/admin/language/en-gb/extension/module/enquiry.php
