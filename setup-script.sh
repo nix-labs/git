@@ -23,6 +23,7 @@ sudo apt-get install -y default-jdk chromium-browser apache2 mysql-server-5.5 my
 #Apache
 sudo echo "ServerName localhost">>/etc/apache2/apache2.conf
 mkdir /home/dev/webroot
+mkdir /home/dev/workspace
 
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
@@ -63,14 +64,14 @@ sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 
 #JShop
 cd /home/dev/git/jshop
-mkdir /home/dev/workspace
 sudo mvn eclipse:eclipse -Dwtpversion=2.0
 mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
 
 ## Permissions
-sudo chown -R dev:dev /home/dev/webroot
-sudo chown -R dev:dev /home/dev/git
-sudo chown -R dev:dev /home/dev/workspace
+#sudo chown -R dev:dev /home/dev/webroot
+#sudo chown -R dev:dev /home/dev/git
+#sudo chown -R dev:dev /home/dev/workspace
+sudo chown -R dev:dev /home/dev
 sudo find /home/dev/webroot -type d -exec chmod 2750 {} \;
 sudo find /home/dev/webroot -type f -exec chmod 0644 {} \;
 sudo find /home/dev/git -type d -exec chmod 2750 {} \;
@@ -89,15 +90,5 @@ ln -s /home/dev/webroot/shop/ext/catalog/view/xheader.tpl /home/dev/webroot/shop
 ln -s /home/dev/webroot/shop/ext/catalog/view/xfooter.tpl /home/dev/webroot/shop/catalog/view/theme/default/template/common/xfooter.tpl
 ln -s /home/dev/webroot/shop/ext/catalog/language/xheader.php /home/dev/webroot/shop/catalog/language/en-gb/common/xheader.php
 ln -s /home/dev/webroot/shop/ext/catalog/language/xfooter.php /home/dev/webroot/shop/catalog/language/en-gb/common/xfooter.php
-
-#Ubuntu
-sudo xrandr -s 1440x900
-
-#Cleanup
-sudo apt-get -f install
-sudo apt-get autoremove
-sudo apt-get -y autoclean
-sudo apt-get -y clean
-rm /home/dev/setup-script.sh
 
 sudo reboot
