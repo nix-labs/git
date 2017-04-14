@@ -1,7 +1,5 @@
 package com.nix.mars.config;
 
-import javax.servlet.Filter;
-
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MarsInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -21,11 +19,11 @@ public class MarsInitializer extends AbstractAnnotationConfigDispatcherServletIn
         return new String[] { "/" };
     }
     
-    @Override
+    /*@Override
     protected Filter[] getServletFilters() {
     	Filter [] singleton = { new CORSFilter()};
     	return singleton;
-    }
+    }*/
     
     
  
