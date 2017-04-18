@@ -47,18 +47,18 @@ sudo git clone https://github.com/nix-labs/git.git
 
 ## Permissions
 sudo chown -R dev:dev /home/dev
-sudo find /home/dev/git -type d -exec chmod 2750 {} \;
-sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
 
 #JShop
 cd /home/dev/git/jshop
-mvn eclipse:eclipse -Dwtpversion=2.0
-mvn -Declipse.workspace="/home/dev/workspace" eclipse:configure-workspace
+mvn eclipse:eclipse
+mvn eclipse:configure-workspace -Declipse.workspace="/home/dev/workspace" 
 
 #Opencart
 sudo cp -a /home/dev/git/shop/. /home/dev/webroot/shop
 sudo cp -a /home/dev/git/config/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo find /home/dev/git -type d -exec chmod 2750 {} \;
+sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 
 ln -s /home/dev/webroot/shop/ext/admin/controller/enquiry.php /home/dev/webroot/shop/admin/controller/extension/module/enquiry.php
 ln -s /home/dev/webroot/shop/ext/admin/language/enquiry.php /home/dev/webroot/shop/admin/language/en-gb/extension/module/enquiry.php
