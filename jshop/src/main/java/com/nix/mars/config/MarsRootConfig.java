@@ -25,9 +25,9 @@ public class MarsRootConfig {
     
 	    BasicDataSource ds = new BasicDataSource();
 	    ds.setDriverClassName("com.mysql.jdbc.Driver");
-	    ds.setUrl("jdbc:mysql://localhost:3306/mars");
-	    ds.setUsername("root");
-	    ds.setPassword("passw0rd");
+	    ds.setUrl("jdbc:mysql://localhost:3306/marsdb");
+	    ds.setUsername("dbadmin");
+	    ds.setPassword("dbadmin");
         return ds;
     }
 	

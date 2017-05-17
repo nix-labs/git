@@ -1,19 +1,25 @@
 package com.nix.mars.user;
  
+import java.util.LinkedHashMap;
+import java.util.List;
+
 import org.springframework.web.client.RestTemplate;
+
+import com.nix.mars.catalog.model.Product;
+import com.nix.mars.user.model.User;
  
 public class UserRestClient {
  
-    public static final String REST_SERVICE_URI = "http://localhost:8080/supercode";
+    public static final String REST_SERVICE_URI = "http://localhost:8080/jshop";
      
      //GET 
     
-    //@SuppressWarnings("unchecked")
-    /*private static void listAllUsers(){
+    @SuppressWarnings("unchecked")
+    private static void listAllUsers(){
         System.out.println("Testing listAllUsers API-----------");
          
         RestTemplate restTemplate = new RestTemplate();
-        List<LinkedHashMap<String, Object>> usersMap = restTemplate.getForObject(REST_SERVICE_URI+"/product/", List.class);
+        List<LinkedHashMap<String, Object>> usersMap = restTemplate.getForObject(REST_SERVICE_URI+"/user/", List.class);
          
         if(usersMap!=null){
             for(LinkedHashMap<String, Object> map : usersMap){
@@ -22,15 +28,15 @@ public class UserRestClient {
         }else{
             System.out.println("No user exist----------");
         }
-    }*/
+    }
      
      //GET 
-    /*private static void getUser(){
+    private static void getUser(){
         System.out.println("Testing getUser API----------");
         RestTemplate restTemplate = new RestTemplate();
-        Product user = restTemplate.getForObject(REST_SERVICE_URI+"/product/30", Product.class);
-        System.out.println("User : id="+user.getProductId() + ", Name="+user.getModel());
-    }*/
+        User user = restTemplate.getForObject(REST_SERVICE_URI+"/user/1", User.class);
+        System.out.println("User : id="+user.getUserId() + ", Name="+user.getUsername());
+    }
      
     // POST 
     /*private static void createUser() {
@@ -51,11 +57,11 @@ public class UserRestClient {
     }*/
  
           //DELETE 
-    private static void deleteUser() {
+    /*private static void deleteUser() {
         System.out.println("Testing delete User API----------");
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(REST_SERVICE_URI+"/user/1");
-    }
+    }*/
  
  
      //DELETE 
@@ -67,7 +73,7 @@ public class UserRestClient {
  
     public static void main(String args[]){
         //listAllUsers();
-        //getUser();
+        getUser();
         //updateProduct();
         //getUser();
         //createUser();
@@ -75,7 +81,7 @@ public class UserRestClient {
         //listAllUsers();
         //updateUser();
         //listAllUsers();
-    	deleteUser();
+    	//deleteUser();
         //listAllUsers();
         //deleteAllUsers();
         //listAllUsers();
