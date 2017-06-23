@@ -25,15 +25,24 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByUsername(username);
 	}
 
-	public int createUser(User user) {
+	public User createUser(User user) {
+		if(findByUsername(user.getUsername()) != null) {
+			return null;
+		}
 		return userDao.createUser(user);
 	}
 
-	public int updateUser(User user) {
+	public User updateUser(long id, User user) {
+		if(findByUserId(id) == null) {
+			return null;
+		}
 		return userDao.updateUser(user);
 	}
 
-	public int deleteUser(long userId) {
-		return userDao.deleteUser(userId);
+	public User deleteUser(long id) {
+		if(findByUserId(id) == null) {
+			return null;
+		}
+		return userDao.deleteUser(id);
 	}
 }

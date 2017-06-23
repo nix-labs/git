@@ -40,7 +40,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 		return read(sqlQuery, args, new BeanPropertyRowMapper<User>(User.class)).get(0);
 	}
 
-	public int createUser(User user) {
+	public User createUser(User user) {
 		String sqlQuery = "INSERT INTO user (user_group_id, username, password, salt, firstname, lastname, email, image, code, ip, status, date_added) " + 
 				"VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -66,10 +66,10 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 		} else
 			System.out.println("User save failed with id=" + user.getUserId());
 		
-		return 0;
+		return null;
 	}
 
-	public int updateUser(User user) {
+	public User updateUser(User user) {
 		/*String sqlQuery = "update product set model=? where product_id=?";
 		Object[] args = new Object[] { user.getModel(), user.getProductId() };
 
@@ -79,20 +79,20 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 		} else
 			System.out.println("No Product found with id=" + user.getProductId());*/
 		
-		return 0;
+		return null;
 	}
 
-	public int deleteUser(long userId) {
+	public User deleteUser(long id) {
 		String sqlQuery = "delete from user where user_id=?";
-		Object[] args = new Object[] { userId };
+		Object[] args = new Object[] { id };
 
 		int out = delete(sqlQuery, args);
 		if (out != 0) {
-			System.out.println("User deleted with id=" + userId);
+			System.out.println("User deleted with id=" + id);
 		} else
-			System.out.println("User delete failed with id=" + userId);
+			System.out.println("User delete failed with id=" + id);
 		
-		return 0;
+		return null;
 	}
 
 }
