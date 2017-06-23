@@ -13,9 +13,9 @@ public interface UserDao extends BaseDao<User> {
 
 	User findByUsername(String username);
 
-	int createUser(User user);
+	User createUser(User user);
 
-	int updateUser(User user);
+	User updateUser(User user);
 	
-	int deleteUser(long userId);
+	User deleteUser(long id);
 }

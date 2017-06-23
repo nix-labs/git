@@ -59,13 +59,5 @@ public class MarsRootConfig {
         return userService;
     }
     
-    /*@Bean
-    public ProductController productConroller() {
-		ProductController productController = new ProductController();
-        productController.setProductService(productService());
-        return productController;
-    }*/
-
-    
     
 }
