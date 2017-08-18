@@ -21,8 +21,8 @@ define('DIR_LOGS', 'D:/Programs/Apache2.2/htdocs/npshop/system/logs/');
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'npdbadmin');
-define('DB_PASSWORD', 'np@india');
+define('DB_USERNAME', 'tgadmin');
+define('DB_PASSWORD', 'passw0rd');
 define('DB_DATABASE', 'npshopdb');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'np_');

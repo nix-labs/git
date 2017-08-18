@@ -1,4 +1,4 @@
 CREATE DATABASE npshopdb;
-CREATE USER 'npdbadmin'@'localhost' IDENTIFIED BY 'np@india';
-GRANT ALL PRIVILEGES ON npshopdb.* TO 'npdbadmin'@'localhost';
+CREATE USER 'tgadmin'@'localhost' IDENTIFIED BY 'passw0rd';
+GRANT ALL PRIVILEGES ON npshopdb.* TO 'tgadmin'@'localhost';
 FLUSH PRIVILEGES;
