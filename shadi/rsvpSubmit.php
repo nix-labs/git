@@ -6,9 +6,9 @@ $email =  $_POST["email"];
 $comment =  $_POST["comment"];
 
 $servername = "localhost";
-$username = "root";
+$username = "tgadmin";
 $password = "passw0rd";
-$dbname = "labworks";
+$dbname = "shadidb";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

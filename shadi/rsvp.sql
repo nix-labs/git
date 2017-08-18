@@ -1,19 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 2.8.0.1
--- http://www.phpmyadmin.net
--- 
--- Host: localhost
--- Generation Time: Jan 28, 2017 at 10:09 PM
--- Server version: 5.6.32
--- PHP Version: 4.4.9
--- 
--- Database: labworks
--- Username: root
--- Password: passw0rd
--- Port 3306
--- 
+CREATE DATABASE shadidb;
+CREATE USER 'tgadmin'@'localhost' IDENTIFIED BY 'passw0rd';
+GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost';
+FLUSH PRIVILEGES;
 
--- --------------------------------------------------------
 
 -- 
 -- Table structure for table `rsvp`
