@@ -1,4 +1,6 @@
 <?php
+
+$webrootPath = '/home/dev/webroot/';
 // HTTP
 define('HTTP_SERVER', 'http://localhost/npshop/admin/');
 define('HTTP_CATALOG', 'http://localhost/npshop/');
@@ -8,18 +10,18 @@ define('HTTPS_SERVER', 'http://localhost/npshop/admin/');
 define('HTTPS_CATALOG', 'http://localhost/npshop/');
 
 // DIR
-define('DIR_APPLICATION', 'D:/Programs/Apache2.2/htdocs/npshop/admin/');
-define('DIR_SYSTEM', 'D:/Programs/Apache2.2/htdocs/npshop/system/');
-define('DIR_LANGUAGE', 'D:/Programs/Apache2.2/htdocs/npshop/admin/language/');
-define('DIR_TEMPLATE', 'D:/Programs/Apache2.2/htdocs/npshop/admin/view/template/');
-define('DIR_CONFIG', 'D:/Programs/Apache2.2/htdocs/npshop/system/config/');
-define('DIR_IMAGE', 'D:/Programs/Apache2.2/htdocs/npshop/image/');
-define('DIR_CACHE', 'D:/Programs/Apache2.2/htdocs/npshop/system/cache/');
-define('DIR_DOWNLOAD', 'D:/Programs/Apache2.2/htdocs/npshop/system/download/');
-define('DIR_UPLOAD', 'D:/Programs/Apache2.2/htdocs/npshop/system/upload/');
-define('DIR_LOGS', 'D:/Programs/Apache2.2/htdocs/npshop/system/logs/');
-define('DIR_MODIFICATION', 'D:/Programs/Apache2.2/htdocs/npshop/system/modification/');
-define('DIR_CATALOG', 'D:/Programs/Apache2.2/htdocs/npshop/catalog/');
+define('DIR_APPLICATION', $webrootPath . 'npshop/admin/');
+define('DIR_SYSTEM', $webrootPath . 'npshop/system/');
+define('DIR_LANGUAGE', $webrootPath . 'npshop/admin/language/');
+define('DIR_TEMPLATE', $webrootPath . 'npshop/admin/view/template/');
+define('DIR_CONFIG', $webrootPath . 'npshop/system/config/');
+define('DIR_IMAGE', $webrootPath . 'npshop/image/');
+define('DIR_CACHE', $webrootPath . 'npshop/system/cache/');
+define('DIR_DOWNLOAD', $webrootPath . 'npshop/system/download/');
+define('DIR_UPLOAD', $webrootPath . 'npshop/system/upload/');
+define('DIR_LOGS', $webrootPath . 'npshop/system/logs/');
+define('DIR_MODIFICATION', $webrootPath . 'npshop/system/modification/');
+define('DIR_CATALOG', $webrootPath . 'npshop/catalog/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
