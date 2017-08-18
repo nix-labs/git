@@ -25,4 +25,4 @@ define('DB_USERNAME', 'npdbadmin');
 define('DB_PASSWORD', 'np@india');
 define('DB_DATABASE', 'npshopdb');
 define('DB_PORT', '3306');
-define('DB_PREFIX', '');
+define('DB_PREFIX', 'np_');
