@@ -49,15 +49,23 @@ class ControllerCheckoutSuccess extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_basket'),
-			'href' => $this->url->link('checkout/cart')
-		);
+		if ($this->config->get('config_store_id') == 0) {
+			$data['breadcrumbs'][] = array(
+				'text' => $this->language->get('text_basket_cart'),
+				'href' => $this->url->link('checkout/cart')
+			);
 
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_checkout'),
-			'href' => $this->url->link('checkout/checkout', '', 'SSL')
-		);
+		} else {
+			$data['breadcrumbs'][] = array(
+				'text' => $this->language->get('text_basket'),
+				'href' => $this->url->link('checkout/cart')
+			);
+			
+			$data['breadcrumbs'][] = array(
+				'text' => $this->language->get('text_checkout'),
+				'href' => $this->url->link('checkout/checkout', '', 'SSL')
+			);
+		}
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_success'),
@@ -70,6 +78,11 @@ class ControllerCheckoutSuccess extends Controller {
 			$data['text_message'] = sprintf($this->language->get('text_customer'), $this->url->link('account/account', '', 'SSL'), $this->url->link('account/order', '', 'SSL'), $this->url->link('account/download', '', 'SSL'), $this->url->link('information/contact'));
 		} else {
 			$data['text_message'] = sprintf($this->language->get('text_guest'), $this->url->link('information/contact'));
+		}
+
+		if ($this->config->get('config_store_id') == 0) {
+			$data['heading_title'] = $this->language->get('heading_title_enquiry');
+			$data['text_message'] = sprintf($this->language->get('text_enquiry'), isset($activity_data['order_id'])?$activity_data['order_id']:'', $this->config->get('config_telephone'));
 		}
 
 		$data['button_continue'] = $this->language->get('button_continue');

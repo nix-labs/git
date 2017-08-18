@@ -54,7 +54,7 @@ class ModelAccountCustomer extends Model {
 		$mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
 		$mail->setSubject($subject);
 		$mail->setText($message);
-		$mail->send();
+		//$mail->send();
 
 		// Send to main admin email if new account email is enabled
 		if ($this->config->get('config_account_mail')) {
@@ -80,7 +80,7 @@ class ModelAccountCustomer extends Model {
 			$mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
 			$mail->setSubject(html_entity_decode($this->language->get('text_new_customer'), ENT_QUOTES, 'UTF-8'));
 			$mail->setText($message);
-			$mail->send();
+			//$mail->send();
 
 			// Send to additional alert emails if new account email is enabled
 			$emails = explode(',', $this->config->get('config_mail_alert'));
@@ -88,7 +88,7 @@ class ModelAccountCustomer extends Model {
 			foreach ($emails as $email) {
 				if (utf8_strlen($email) > 0 && preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $email)) {
 					$mail->setTo($email);
-					$mail->send();
+					//$mail->send();
 				}
 			}
 		}

@@ -69,6 +69,10 @@ class ControllerCommonFooter extends Controller {
 
 			$this->model_tool_online->whosonline($ip, $this->customer->getId(), $url, $referer);
 		}
+		
+		if ($this->config->get('config_store_id') == 0) {
+			$data['isB2B'] = true;
+		}
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/footer.tpl', $data);

@@ -114,7 +114,15 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['fax'] = $customer_info['fax'];
 				$order_data['custom_field'] = unserialize($customer_info['custom_field']);
 			} elseif (isset($this->session->data['guest'])) {
-				$order_data['customer_id'] = 0;
+				
+				//Custom: Start
+				if ($this->config->get('config_store_id') == 0) {
+					$order_data['customer_id'] = $this->session->data['guest']['customer_id'];
+				} else {
+					$order_data['customer_id'] = 0;
+				}
+				//Custom: End
+				
 				$order_data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
 				$order_data['firstname'] = $this->session->data['guest']['firstname'];
 				$order_data['lastname'] = $this->session->data['guest']['lastname'];
@@ -405,16 +413,30 @@ class ControllerCheckoutConfirm extends Controller {
 					'text'  => $this->currency->format($total['value']),
 				);
 			}
-
-			$data['payment'] = $this->load->controller('payment/' . $this->session->data['payment_method']['code']);
+			
+			//Custom: Start
+			if ($this->config->get('config_store_id') == 0) {
+				$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('free_checkout_order_status_id'));
+			} else {
+				$data['payment'] = $this->load->controller('payment/' . $this->session->data['payment_method']['code']);
+			}
+			//Custom: End
+			
 		} else {
 			$data['redirect'] = $redirect;
 		}
-
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/confirm.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/confirm.tpl', $data));
+		
+		//Custom: Start
+		if ($this->config->get('config_store_id') == 0) {
+			$this->response->redirect($this->url->link('checkout/success'));
 		} else {
-			$this->response->setOutput($this->load->view('default/template/checkout/confirm.tpl', $data));
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/confirm.tpl')) {
+				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/confirm.tpl', $data));
+			} else {
+				$this->response->setOutput($this->load->view('default/template/checkout/confirm.tpl', $data));
+			}
 		}
+		//Custom: End
+		
 	}
 }

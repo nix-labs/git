@@ -43,8 +43,12 @@
                 <td class="text-left"><?php echo $column_name; ?></td>
                 <td class="text-left"><?php echo $column_model; ?></td>
                 <td class="text-left"><?php echo $column_quantity; ?></td>
-                <td class="text-right"><?php echo $column_price; ?></td>
-                <td class="text-right"><?php echo $column_total; ?></td>
+                <?php if (isset($column_price)) { ?>
+                	<td class="text-right"><?php echo $column_price; ?></td>
+                <?php } ?>
+                <?php if (isset($column_total)) { ?>
+                	<td class="text-right"><?php echo $column_total; ?></td>
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -77,8 +81,12 @@
                     <span class="input-group-btn">
                     <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
                     <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['key']; ?>');"><i class="fa fa-times-circle"></i></button></span></div></td>
-                <td class="text-right"><?php echo $product['price']; ?></td>
-                <td class="text-right"><?php echo $product['total']; ?></td>
+	                <?php if (isset($column_price)) { ?>
+	                	<td class="text-right"><?php echo $product['price']; ?></td>
+               		<?php } ?>
+               		<?php if (isset($column_total)) { ?>
+	                	<td class="text-right"><?php echo $product['total']; ?></td>
+                	<?php } ?>
               </tr>
               <?php } ?>
               <?php foreach ($vouchers as $vouchers) { ?>
@@ -115,9 +123,16 @@
           </table>
         </div>
       </div>
+      
+      <?php if (isset($enquiry)) { ?>
+      <div><?php echo $enquiry; ?></div>
+      <?php } ?>
+      
       <div class="buttons">
         <div class="pull-left"><a href="<?php echo $continue; ?>" class="btn btn-default"><?php echo $button_shopping; ?></a></div>
+        <?php if (isset($checkout)) { ?>
         <div class="pull-right"><a href="<?php echo $checkout; ?>" class="btn btn-primary"><?php echo $button_checkout; ?></a></div>
+        <?php } ?>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>

@@ -100,6 +100,7 @@
                 <div class="col-sm-10">
                   <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
                   <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
+				  <a href="#" id="clear-cache" data-toggle="tooltip" title="Clear Cache" class="btn btn-default"><i class="fa fa-reply"></i></a>
                 </div>
               </div>            
               <div class="form-group required">
@@ -1062,6 +1063,18 @@ $('input[name=\'related\']').autocomplete({
 $('#product-related').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
+
+// Custom - Clear Cache
+$(document).ready(function(){
+	var ttt='';
+	$('#clear-cache').click(function(){
+		var msg = $.ajax({type: "GET", url: "index.php?route=catalog/product/clearcache&token=<?php echo $token; ?>&image=<?php echo $image; ?>", async: false}).responseText;
+		alert(msg);
+		return false;
+	})
+		
+});
+
 //--></script> 
   <script type="text/javascript"><!--
 var attribute_row = <?php echo $attribute_row; ?>;

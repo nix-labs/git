@@ -1444,4 +1444,15 @@ class ControllerCatalogProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+	
+	public function clearcache() {
+		$cacheImgDir = DIR_IMAGE . 'cache/';
+		$cacheImgFile = substr($this->request->get['image'], 0, strrpos($this->request->get['image'], ".")) . '-*';
+		foreach (glob($cacheImgDir . $cacheImgFile) as $filename) {
+			unlink($filename);
+		}
+		
+		$this->response->addHeader('Content-Type: text/plain');
+		$this->response->setOutput('Cache cleared successfully!');
+	}
 }

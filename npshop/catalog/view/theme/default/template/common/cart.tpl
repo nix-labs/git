@@ -46,7 +46,13 @@
           </tr>
           <?php } ?>
         </table>
-        <p class="text-right"><a href="<?php echo $cart; ?>"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $checkout; ?>"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a></p>
+        <p class="text-right">
+        	<a href="<?php echo $cart; ?>"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a>
+        	<?php if (isset($text_checkout)) { ?>
+	        	&nbsp;&nbsp;&nbsp;
+	        	<a href="<?php echo $checkout; ?>"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a>
+	        <?php } ?>
+        </p>
       </div>
     </li>
     <?php } else { ?>

@@ -3,7 +3,14 @@ class ControllerCheckoutCart extends Controller {
 	public function index() {
 		$this->load->language('checkout/cart');
 
-		$this->document->setTitle($this->language->get('heading_title'));
+		//Custom: Start
+		if ($this->config->get('config_store_id') == 0) {
+			$this->document->setTitle($this->language->get('heading_title_enquiry'));
+		} else {
+			$this->document->setTitle($this->language->get('heading_title'));
+		}
+		//Custom: End
+		
 
 		$data['breadcrumbs'] = array();
 
@@ -11,11 +18,20 @@ class ControllerCheckoutCart extends Controller {
 			'href' => $this->url->link('common/home'),
 			'text' => $this->language->get('text_home')
 		);
-
-		$data['breadcrumbs'][] = array(
-			'href' => $this->url->link('checkout/cart'),
-			'text' => $this->language->get('heading_title')
-		);
+		
+		if ($this->config->get('config_store_id') == 0) {
+			$data['breadcrumbs'][] = array(
+				'href' => $this->url->link('checkout/cart'),
+				'text' => $this->language->get('heading_title_enquiry')
+					
+			);
+		
+		} else {
+			$data['breadcrumbs'][] = array(
+				'href' => $this->url->link('checkout/cart'),
+				'text' => $this->language->get('heading_title')
+			);
+		}
 
 		if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
 			$data['heading_title'] = $this->language->get('heading_title');
@@ -244,6 +260,16 @@ class ControllerCheckoutCart extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+			//Custom: Start
+			if ($this->config->get('config_store_id') == 0) {
+				$data['heading_title'] = $this->language->get('heading_title_enquiry');
+				$data['enquiry'] = $this->load->controller('checkout/enquiry');
+				$data['attention'] = '';
+				unset($data['column_price']);
+				unset($data['column_total']);
+				unset($data['checkout']);
+			}
+			//Custom: End
 
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/cart.tpl')) {
 				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/cart.tpl', $data));
@@ -267,6 +293,12 @@ class ControllerCheckoutCart extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+			
+			//Custom: Start
+			if ($this->config->get('config_store_id') == 0) {
+				$data['heading_title'] = $this->language->get('heading_title_enquiry');
+			}
+			//Custom: End
 
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/error/not_found.tpl')) {
 				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/error/not_found.tpl', $data));
@@ -377,8 +409,13 @@ class ControllerCheckoutCart extends Controller {
 
 					array_multisort($sort_order, SORT_ASC, $total_data);
 				}
-
-				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+				//Custom: Start
+				if ($this->config->get('config_store_id') == 0) {
+					$json['total'] = sprintf($this->language->get('text_items_noprice'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0));
+				} else {
+					$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+				}
+				//Custom: End
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
@@ -466,8 +503,13 @@ class ControllerCheckoutCart extends Controller {
 
 				array_multisort($sort_order, SORT_ASC, $total_data);
 			}
-
-			$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+			//Custom: Start
+			if ($this->config->get('config_store_id') == 0) {
+				$json['total'] = sprintf($this->language->get('text_items_noprice'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0));
+			} else {
+				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total));
+			}
+			//Custom: End
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

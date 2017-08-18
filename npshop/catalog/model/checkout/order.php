@@ -543,6 +543,7 @@ class ModelCheckoutOrder extends Model {
 
 				// Products
 				$data['products'] = array();
+				$grandTotal = 0;
 
 				foreach ($order_product_query->rows as $product) {
 					$option_data = array();
@@ -576,6 +577,8 @@ class ModelCheckoutOrder extends Model {
 						'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
 						'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value'])
 					);
+					
+					$grandTotal += $product['total'];
 				}
 
 				// Vouchers
@@ -593,12 +596,17 @@ class ModelCheckoutOrder extends Model {
 				// Order Totals
 				$order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "' ORDER BY sort_order ASC");
 
-				foreach ($order_total_query->rows as $total) {
+				/*foreach ($order_total_query->rows as $total) {
 					$data['totals'][] = array(
 						'title' => $total['title'],
 						'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value']),
 					);
-				}
+				}*/
+				
+				$data['totals'][] = array(
+						'title' => 'Grand Total',
+						'text'  => $this->currency->format($grandTotal, $order_info['currency_code'], $order_info['currency_value']),
+				);
 
 				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/mail/order.tpl')) {
 					$html = $this->load->view($this->config->get('config_template') . '/template/mail/order.tpl', $data);
@@ -693,7 +701,7 @@ class ModelCheckoutOrder extends Model {
 					$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 					$mail->setHtml($html);
 					$mail->setText($text);
-					$mail->send();
+					//$mail->send();
 				}
 
 				// Admin Alert Mail
@@ -796,7 +804,7 @@ class ModelCheckoutOrder extends Model {
 					foreach ($emails as $email) {
 						if ($email && preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $email)) {
 							$mail->setTo($email);
-							$mail->send();
+							//$mail->send();
 						}
 					}
 				}
@@ -846,7 +854,7 @@ class ModelCheckoutOrder extends Model {
 				$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 				$mail->setText($message);
-				$mail->send();
+				//$mail->send();
 			}
 
 			// If order status in the complete range create any vouchers that where in the order need to be made available.

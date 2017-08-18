@@ -144,7 +144,24 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$data['class'] = 'common-home';
 		}
-
+		
+		//Custom: Start
+		if ($this->config->get('config_store_id') == 0) {
+			unset($data['account']);
+			unset($data['wishlist']);
+			unset($data['shopping_cart']);
+			unset($data['checkout']);
+			
+			//Enquiry cart link
+			$data['text_enquiry_cart'] = $this->language->get('text_enquiry_cart');
+			$data['enquiry_cart'] = $this->url->link('checkout/cart');
+			
+			//Complete catalog link
+			$data['text_catalog'] = $this->language->get('text_catalog');
+			$data['catalog'] = $this->url->link('product/catalog');
+		}
+		//Custom: End
+		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
 		} else {

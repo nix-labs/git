@@ -14,3 +14,8 @@ $_['text_logout']        = 'Logout';
 $_['text_checkout']      = 'Checkout';
 $_['text_search']        = 'Search';
 $_['text_all']           = 'Show All';
+
+//Custom
+$_['text_enquiry_cart'] = 'Enquiry Cart';
+$_['text_catalog'] = 'Complete Catalog';
+

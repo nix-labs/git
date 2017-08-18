@@ -315,6 +315,9 @@ footer {
 	border-top: 1px solid #ddd;
 	color: #e2e2e2;
 }
+footer p {
+	text-align: center;
+}
 footer hr {
 	border-top: none;
 	border-bottom: 1px solid #666;
