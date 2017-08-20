@@ -17,7 +17,6 @@ sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_aga
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
 sudo apt-get install -y default-jdk firefox apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl mysql-workbench git open-vm-tools-lts-trusty
-#sudo apt-get install -y eclipse maven eclipse-egit
 
 ## Configs
 
@@ -45,6 +44,14 @@ sudo find /home/dev/git -type d -exec chmod 2750 {} \;
 sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 
 sudo cp -a /home/dev/git/config/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+#eclipse
+wget http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
+sudo tar -xvzf eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz -C /opt
+sudo rm eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
+sudo cp /home/dev/git/config/eclipse.desktop /usr/share/applications/eclipse.desktop
+sudo desktop-file-install /usr/share/applications/eclipse.desktop
+sudo ln -s /opt/eclipse/eclipse /usr/local/bin
 
 #Cleanup
 sudo apt-get -f install
