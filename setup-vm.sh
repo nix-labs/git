@@ -17,7 +17,7 @@ sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_aga
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
 sudo apt-get install -y default-jdk firefox apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl mysql-workbench git open-vm-tools-lts-trusty
-sudo apt-get install -y eclipse maven eclipse-egit
+#sudo apt-get install -y eclipse maven eclipse-egit
 
 ## Configs
 
