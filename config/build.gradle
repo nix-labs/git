@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+def jdkVersion = 1.7
+def springVersion = "4.3.6.RELEASE"
+def mysqlVersion = "5.1.42"
+def jacksonVersion = "2.8.6"
+def servletApiVersion = "3.1"
+
+sourceCompatibility = jdkVersion
+targetCompatibility = jdkVersion
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.0'
+}
+
+dependencies {
+
+	compile 'org.springframework:spring-webmvc:' +springVersion
+	compile 'org.springframework:spring-tx:' +springVersion
+	compile 'org.springframework:spring-jdbc:' +springVersion
+	
+	compile 'mysql:mysql-connector-java:' +mysqlVersion
+	compile 'commons-dbcp:commons-dbcp:1.4'
+	compile 'com.fasterxml.jackson.core:jackson-databind:' +jacksonVersion
+	compile 'log4j:log4j:1.2.14'
+
+	providedCompile 'javax.servlet:javax.servlet-api:' + servletApiVersion
+	
+}
+
+//For Eclipse IDE only
+eclipse {
+
+  wtp {
+    component {
+      
+      //define context path, default to project folder name
+      contextPath = 'Spring'
+      
+    }
+    
+  }
+}
