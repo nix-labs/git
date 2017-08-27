@@ -1,9 +1,4 @@
 CREATE DATABASE shadidb;
-CREATE USER 'tgadmin'@'localhost' IDENTIFIED BY 'passw0rd';
-GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost';
-FLUSH PRIVILEGES;
-
-
 -- 
 -- Table structure for table `rsvp`
 -- 

@@ -9,6 +9,12 @@ mysql -u root -proot < /home/dev/git/npshop/npshopdb/npshopdb.sql
 sudo echo "GRANT ALL PRIVILEGES ON npshopdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 sudo echo "FLUSH PRIVILEGES" | mysql -uroot -proot
 
+#shadi
+sudo cp -a /home/dev/git/shadi/. /home/dev/webroot/shadi
+mysql -u root -proot < /home/dev/git/shadi/rsvp.sql
+sudo echo "GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
+sudo echo "FLUSH PRIVILEGES" | mysql -uroot -proot
+
 #sudo echo "DROP DATABASE IF EXISTS marsdb" | mysql -uroot -proot
 #sudo echo "CREATE DATABASE marsdb" | mysql -uroot -proot
 #sudo echo "GRANT ALL PRIVILEGES ON marsdb.* TO 'dbadmin'@'localhost'" | mysql -uroot -proot

@@ -60,4 +60,4 @@ sudo apt-get -y autoclean
 sudo apt-get -y clean
 rm /home/dev/setup-vm.sh
 
-#sudo reboot
+sudo reboot
