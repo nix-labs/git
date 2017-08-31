@@ -1,7 +1,0 @@
-apply plugin : 'war'
-apply plugin : 'eclipse-wtp'
-
-task wrapper(type: Wrapper) {
-	gradleVersion = '4.0'
-}
-

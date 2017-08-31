@@ -1,4 +1,5 @@
 CREATE DATABASE shadidb;
+USE shadidb;
 -- 
 -- Table structure for table `rsvp`
 -- 
