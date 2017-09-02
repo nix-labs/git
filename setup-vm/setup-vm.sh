@@ -1,10 +1,5 @@
 #!/bin/bash
 
-## Init
-#wget https://goo.gl/z3uKuj -O setup-vm.sh
-#sudo chmod 777 setup-vm.sh
-#sudo ./setup-vm.sh
-
 ## Updates
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -43,13 +38,13 @@ sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
 sudo find /home/dev/git -type d -exec chmod 2750 {} \;
 sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 
-sudo cp -a /home/dev/git/config/000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo cp -a /home/dev/git/setup-vm/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #eclipse
 wget http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
 sudo tar -xvzf eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz -C /opt
 sudo rm eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
-sudo cp /home/dev/git/config/eclipse.desktop /usr/share/applications/eclipse.desktop
+sudo cp /home/dev/git/setup-vm/eclipse.desktop /usr/share/applications/eclipse.desktop
 sudo desktop-file-install /usr/share/applications/eclipse.desktop
 sudo ln -s /opt/eclipse/eclipse /usr/local/bin
 
