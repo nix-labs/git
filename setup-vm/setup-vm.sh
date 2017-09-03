@@ -21,18 +21,6 @@ mkdir /home/dev/workspace
 #Apache
 sudo a2enmod rewrite
 
-#Tomcat
-sudo service tomcat7 stop
-sudo update-rc.d tomcat7 disable
-cd /usr/share/tomcat7
-sudo ln -s /var/lib/tomcat7/conf conf
-sudo ln -s /var/lib/tomcat7/common common
-sudo ln -s /var/lib/tomcat7/server server
-sudo ln -s /var/lib/tomcat7/shared shared
-sudo ln -s /etc/tomcat7/policy.d/03catalina.policy conf/catalina.policy
-sudo ln -s /var/log/tomcat7 log
-sudo chmod -R 777 /usr/share/tomcat7/conf
-
 #MySQL
 sudo echo "CREATE USER 'tgadmin'@'localhost' IDENTIFIED BY 'passw0rd'" | mysql -uroot -proot
 
@@ -59,6 +47,18 @@ sudo rm eclipse-jee-mars-2-linux-gtk-x86_64.tar.gz
 sudo cp /home/dev/git/setup-vm/eclipse.desktop /usr/share/applications/eclipse.desktop
 sudo desktop-file-install /usr/share/applications/eclipse.desktop
 sudo ln -s /opt/eclipse/eclipse /usr/local/bin
+
+#Tomcat
+sudo service tomcat7 stop
+sudo update-rc.d tomcat7 disable
+cd /usr/share/tomcat7
+sudo ln -s /var/lib/tomcat7/conf conf
+sudo ln -s /var/lib/tomcat7/common common
+sudo ln -s /var/lib/tomcat7/server server
+sudo ln -s /var/lib/tomcat7/shared shared
+sudo ln -s /etc/tomcat7/policy.d/03catalina.policy conf/catalina.policy
+sudo ln -s /var/log/tomcat7 log
+sudo chmod -R 777 /usr/share/tomcat7/conf
 
 #Cleanup
 sudo apt-get -f install
