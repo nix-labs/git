@@ -54,5 +54,6 @@ sudo apt-get autoremove
 sudo apt-get -y autoclean
 sudo apt-get -y clean
 rm /home/dev/setup-vm.sh
+rm /home/dev/setup-init.sh
 
 sudo reboot

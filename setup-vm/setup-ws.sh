@@ -14,7 +14,7 @@ mysql -u root -proot < /home/dev/git/shadi/rsvp.sql
 sudo echo "GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
 #venus
-cd /opt/dev/git/Venus
+cd /home/dev/git/Venus
 mvn eclipse:eclipse
 mysql -u root -proot < /home/dev/git/Venus/sql/venus.sql
 sudo echo "GRANT ALL PRIVILEGES ON venusdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
