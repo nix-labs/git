@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-insert into user values ('tgupta', 'Tushar', 'Gupta', 'tgupta@mail.com', 1);
+insert into user values ('1', 'tgupta', 'Tushar', 'Gupta', 'tgupta@mail.com', 1);
