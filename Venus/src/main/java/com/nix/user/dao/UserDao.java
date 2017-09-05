@@ -15,7 +15,7 @@ public interface UserDao extends BaseDao<User> {
 
 	User createUser(User user);
 
-	User updateUser(User user);
+	long updateUser(User oldUser, User newuser);
 	
-	User deleteUser(long id);
+	User deleteUser(User user);
 }
