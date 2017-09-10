@@ -12,8 +12,8 @@ import com.nix.base.dao.BaseDaoImpl;
 import com.nix.user.model.User;
 
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
-	
-	//private Logger logger = Logger.getLogger(UserDaoImpl.class);
+
+	// private Logger logger = Logger.getLogger(UserDaoImpl.class);
 
 	public void setDataSource(DataSource dataSource) {
 		setJdbcTemplate(new JdbcTemplate(dataSource));
@@ -41,17 +41,11 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 	}
 
 	public User createUser(User user) {
-		String sqlQuery = "INSERT INTO user (user_id, username, firstname, lastname, email, status) " + 
-				"VALUES (?,?,?,?,?,?)";
+		String sqlQuery = "INSERT INTO user (user_id, username, firstname, lastname, email, status) "
+				+ "VALUES (?,?,?,?,?,?)";
 
-		Object[] args = new Object[] 
-			{ 	user.getUserId(),
-				user.getUsername(),
-				user.getFirstname(),
-				user.getLastname(),
-				user.getEmail(),
-				user.getStatus()
-			};
+		Object[] args = new Object[] { user.getUserId(), user.getUsername(), user.getFirstname(), user.getLastname(),
+				user.getEmail(), user.getStatus() };
 
 		int out = create(sqlQuery, args);
 
@@ -63,17 +57,13 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 	}
 
 	public long updateUser(User oldUser, User newUser) {
-		String sqlQuery = "UPDATE user SET username=?, firstname=?, lastname=?, email=?, status=? "
-				+ "WHERE user_id=?";
-		
-		Object[] args = new Object[] 
-			{ 	newUser.getUsername() != null ? newUser.getUsername() : oldUser.getUsername() ,
-				newUser.getFirstname() != null ? newUser.getFirstname() : oldUser.getFirstname() ,
-				newUser.getLastname() != null ? newUser.getLastname() : oldUser.getLastname() ,
-				newUser.getEmail() != null ? newUser.getEmail() : oldUser.getEmail() ,
-				newUser.getStatus() != 0 ? newUser.getStatus() : oldUser.getStatus() ,
-				newUser.getUserId()
-			};
+		String sqlQuery = "UPDATE user SET username=?, firstname=?, lastname=?, email=?, status=? WHERE user_id=?";
+
+		Object[] args = new Object[] { newUser.getUsername() != null ? newUser.getUsername() : oldUser.getUsername(),
+				newUser.getFirstname() != null ? newUser.getFirstname() : oldUser.getFirstname(),
+				newUser.getLastname() != null ? newUser.getLastname() : oldUser.getLastname(),
+				newUser.getEmail() != null ? newUser.getEmail() : oldUser.getEmail(),
+				newUser.getStatus() != 0 ? newUser.getStatus() : oldUser.getStatus(), newUser.getUserId() };
 
 		int out = update(sqlQuery, args);
 		if (out != 0) {

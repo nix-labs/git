@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 		User user = null;
 		try {
 			user = userDao.findByUserId(id);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			user = null;
 		}
 		return user;
@@ -31,14 +31,14 @@ public class UserServiceImpl implements UserService {
 		User user = null;
 		try {
 			user = userDao.findByUsername(username);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			user = null;
 		}
 		return user;
 	}
 
 	public User createUser(User user) {
-		if(findByUsername(user.getUsername()) != null) {
+		if (findByUsername(user.getUsername()) != null) {
 			return null;
 		}
 		return userDao.createUser(user);
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 			oldUser = userDao.findByUserId(newUser.getUserId());
 			long userId = userDao.updateUser(oldUser, newUser);
 			newUser = userDao.findByUserId(userId);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			newUser = null;
 		}
 		return newUser;
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			user = userDao.findByUserId(id);
 			user = userDao.deleteUser(user);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			user = null;
 		}
 		return user;
