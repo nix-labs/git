@@ -16,6 +16,7 @@ sudo echo "GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost'" | mysql -
 #venus
 cd /home/dev/git/Venus
 mvn eclipse:eclipse
+sudo chown -R dev:dev /home/dev
 mysql -u root -proot < /home/dev/git/Venus/sql/venus.sql
 sudo echo "GRANT ALL PRIVILEGES ON venusdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
