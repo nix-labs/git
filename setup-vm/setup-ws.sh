@@ -2,6 +2,7 @@
 
 #Ubuntu
 sudo xrandr -s 1440x900
+sudo chown -R dev:dev /home/dev
 
 #npshop
 sudo cp -a /home/dev/git/npshop/. /home/dev/webroot/npshop
@@ -16,14 +17,13 @@ sudo echo "GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost'" | mysql -
 #venus
 cd /home/dev/git/Venus
 mvn eclipse:eclipse
-sudo chown -R dev:dev /home/dev
 mysql -u root -proot < /home/dev/git/Venus/sql/venus.sql
 sudo echo "GRANT ALL PRIVILEGES ON venusdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
 sudo echo "FLUSH PRIVILEGES" | mysql -uroot -proot
 
-#sudo find /home/dev/git -type d -exec chmod 2750 {} \;
-#sudo find /home/dev/git -type f -exec chmod 0644 {} \;
+sudo find /home/dev/git -type d -exec chmod 2750 {} \;
+sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 
 #Backups
 #sudo apt-get install -y tomcat7

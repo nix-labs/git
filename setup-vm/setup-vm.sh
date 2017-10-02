@@ -11,7 +11,7 @@ sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_aga
 
 ## Installations
 sudo apt-get install -y --no-install-recommends ubuntu-desktop
-sudo apt-get install -y default-jdk firefox apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl mysql-workbench eclipse git maven open-vm-tools-lts-trusty open-vm-tools-lts-trusty-desktop
+sudo apt-get install -y default-jdk firefox apache2 mysql-server-5.5 mysql-client-5.5 php5 php5-mysql libapache2-mod-php5 php5-gd php5-mcrypt php5-curl mysql-workbench eclipse git maven eclipse-egit open-vm-tools-lts-trusty open-vm-tools-lts-trusty-desktop
 
 ## Configs
 
@@ -33,10 +33,7 @@ sudo git config --global user.name "developer"
 sudo git clone https://github.com/nix-labs/git.git
 
 ## Permissions
-#sudo chown -R dev:dev /home/dev
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
-#sudo find /home/dev/git -type d -exec chmod 2750 {} \;
-#sudo find /home/dev/git -type f -exec chmod 0644 {} \;
 
 sudo cp -a /home/dev/git/setup-vm/000-default.conf /etc/apache2/sites-available/000-default.conf
 
