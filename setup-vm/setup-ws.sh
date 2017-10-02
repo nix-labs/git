@@ -15,8 +15,8 @@ echo "GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost'" | mysql -uroot
 
 #venus
 cd /home/dev/git/Venus
-mvn eclipse:configure-workspace -Declipse.workspace=/home/dev/workspace
 mvn eclipse:eclipse
+mvn eclipse:configure-workspace -Declipse.workspace=/home/dev/workspace
 mysql -u root -proot < /home/dev/git/Venus/sql/venus.sql
 echo "GRANT ALL PRIVILEGES ON venusdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
