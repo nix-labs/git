@@ -1,28 +1,29 @@
 #!/bin/bash
 
 #Ubuntu
-sudo xrandr -s 1440x900
+xrandr -s 1440x900
 
 #npshop
-sudo cp -a /home/dev/git/npshop/. /home/dev/webroot/npshop
+cp -a /home/dev/git/npshop/. /home/dev/webroot/npshop
 mysql -u root -proot < /home/dev/git/npshop/npshopdb/npshopdb.sql
-sudo echo "GRANT ALL PRIVILEGES ON npshopdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
+echo "GRANT ALL PRIVILEGES ON npshopdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
 #shadi
-sudo cp -a /home/dev/git/shadi/. /home/dev/webroot/shadi
+cp -a /home/dev/git/shadi/. /home/dev/webroot/shadi
 mysql -u root -proot < /home/dev/git/shadi/rsvp.sql
-sudo echo "GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
+echo "GRANT ALL PRIVILEGES ON shadidb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
 #venus
 cd /home/dev/git/Venus
+mvn eclipse:configure-workspace -Declipse.workspace=/home/dev/workspace
 mvn eclipse:eclipse
 mysql -u root -proot < /home/dev/git/Venus/sql/venus.sql
-sudo echo "GRANT ALL PRIVILEGES ON venusdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
+echo "GRANT ALL PRIVILEGES ON venusdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
-sudo echo "FLUSH PRIVILEGES" | mysql -uroot -proot
+echo "FLUSH PRIVILEGES" | mysql -uroot -proot
 
-sudo find /home/dev/git -type d -exec chmod 2750 {} \;
-sudo find /home/dev/git -type f -exec chmod 0644 {} \;
+find /home/dev/git -type d -exec chmod 2750 {} \;
+find /home/dev/git -type f -exec chmod 0644 {} \;
 
 #Backups
 #sudo apt-get install -y tomcat7
