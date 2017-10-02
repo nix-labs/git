@@ -34,7 +34,7 @@ sudo git clone https://github.com/nix-labs/git.git
 
 ## Permissions
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
-
+sudo chown -R dev:dev /home/dev
 sudo cp -a /home/dev/git/setup-vm/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #Cleanup

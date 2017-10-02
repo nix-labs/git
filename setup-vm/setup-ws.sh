@@ -2,7 +2,6 @@
 
 #Ubuntu
 sudo xrandr -s 1440x900
-sudo chown -R dev:dev /home/dev
 
 #npshop
 sudo cp -a /home/dev/git/npshop/. /home/dev/webroot/npshop
