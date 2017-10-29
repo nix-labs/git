@@ -42,7 +42,9 @@ sudo apt-get -f install
 sudo apt-get autoremove
 sudo apt-get -y autoclean
 sudo apt-get -y clean
-rm /home/dev/setup-vm.sh
-rm /home/dev/setup-init.sh
+sudo rm /home/dev/setup-vm.sh
+sudo rm /home/dev/setup-init.sh
+sudo chmod 777 /home/dev/git/setup-vm/setup-ws.sh
+gsettings set org.gnome.gedit.preferences.editor create-backup-copy false
 
 sudo reboot
