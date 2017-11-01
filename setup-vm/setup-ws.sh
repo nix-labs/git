@@ -8,6 +8,11 @@ cp -a /home/dev/git/npshop/. /home/dev/webroot/npshop
 mysql -u root -proot < /home/dev/git/npshop/npshopdb/npshopdb.sql
 echo "GRANT ALL PRIVILEGES ON npshopdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
 
+#shop
+cp -a /home/dev/git/shop/. /home/dev/webroot/shop
+mysql -u root -proot < /home/dev/git/shop/shopdb.sql
+echo "GRANT ALL PRIVILEGES ON shopdb.* TO 'tgadmin'@'localhost'" | mysql -uroot -proot
+
 #shadi
 cp -a /home/dev/git/shadi/. /home/dev/webroot/shadi
 mysql -u root -proot < /home/dev/git/shadi/rsvp.sql
