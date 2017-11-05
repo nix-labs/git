@@ -1,0 +1,96 @@
+<%@ Master Language="VB" CodeFile="MainMasterPage.master.vb" Inherits="MainMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>VIET - Web Connect</title>
+    <link rel="stylesheet" type="text/css" href="Site.css" runat="server" />
+     <script type="text/javascript">
+			function clock()
+			{
+				var today=new Date()
+				var hour=today.getHours()
+				var min=today.getMinutes()
+				var sec=today.getSeconds()
+				hour=checkTime(hour)
+				min=checkTime(min)
+				sec=checkTime(sec)
+				document.getElementById('<%= time_Label.ClientID %>').innerHTML=hour+":"+min+":"+sec
+				t=setTimeout('clock()',500)
+			}
+
+			function checkTime(i)
+			{
+				if (i<10) 
+					{i="0" + i}
+				return i
+			}
+			</script>
+
+   
+</head>
+<body onload="clock()">
+    <form id="form1" runat="server">
+    <div>
+        <table width="100%">
+            <tr>
+                <td width="785"><div id="header"></div></td>
+                    <td>
+                        <div id="google">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center"><asp:Label ID="lblDate" runat="server"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <asp:Image ID="Image1" runat="server" AlternateText="Google" ImageUrl="~/Images/Logo_25wht.gif" Height="23px" ImageAlign="AbsMiddle" />
+                                        <asp:TextBox ID="txtGoogle" runat="server" Columns="10"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rev1" runat="server" ControlToValidate="txtGoogle"
+                                            Display="Dynamic" ValidationGroup="Google">*</asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center"><asp:Button ID="btnGoogle" runat="server" Text="Search" BackColor="Navy" BorderColor="White" BorderStyle="Solid" Font-Bold="True" Font-Names="Arial" Font-Overline="False" ForeColor="White" ValidationGroup="Google"/></td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </td>
+                
+            </tr>
+        </table>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" height="85%">
+            <tr>
+                <td width="20%" valign=top bgcolor=navy><div id="sidebar">
+                    <div>
+                        <asp:Label ID="lblUserName" runat="server" Text="Welcome: "></asp:Label>
+                        <asp:Label ID="UserName" runat="server"></asp:Label>
+                    </div><br /><br />
+                    
+                        <asp:SiteMapDataSource ID="SiteMapData" runat="server" />
+                    <div id="Menu">
+                        <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapData" DisappearAfter="200"
+                            EnableViewState="False" StaticDisplayLevels="2" SkipLinkText="" DynamicPopOutImageUrl="~/Images/Arrow.jpg" StaticPopOutImageUrl="~/Images/Arrow.jpg">
+                        </asp:Menu>
+                    </div>
+                    <br />
+                    <br />
+                    <div>
+                        <asp:Label ID="lblUsers" runat="server" Text="No of Users Online: "></asp:Label>
+                        <asp:Label ID="lblOnlineUsers" runat="server"></asp:Label><br />
+                        <asp:Label ID="time_Label" runat="server" Text="Label"></asp:Label></div>
+                </div></td>
+                <td valign="top" align="center">
+                    <div>
+                        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                        <div id="content"></div>
+                        </asp:contentplaceholder>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

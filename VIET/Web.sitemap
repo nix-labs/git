@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="Home.aspx" title="Home"  description="">
+    <siteMapNode url="Profile.aspx" title="My Account"  description="" roles="*">
+      <siteMapNode url="EditProfile.aspx" title="Edit Profile"  description="" />
+      <siteMapNode url="ChangePassword.aspx" title="Change Password"  description="" />
+    </siteMapNode>
+    <siteMapNode url="Message.aspx" title="Messages" description="" />
+    <siteMapNode url="Notice.aspx" title="Notice Board"  description="" roles="*">
+      <siteMapNode url="Staff\UploadNotice.aspx" title="Upload Notices"  description="" roles="Admin,HOD" />
+      <siteMapNode url="Staff\ManageNotice.aspx" title="Manage Notices"  description="" roles="Admin,HOD" />
+    </siteMapNode>
+    <siteMapNode url="Staff\Circular.aspx" title="Circulars"  description="" roles="Admin,HOD,Faculty">
+      <siteMapNode url="Staff\UploadCirculars.aspx" title="Upload Circulars"  description="" roles="Admin,HOD" />
+      <siteMapNode url="Staff\ManageCirculars.aspx" title="Manage Circulars"  description="" roles="Admin,HOD" />
+    </siteMapNode>
+    <siteMapNode url="Attendance.aspx" title="Attendance"  description="" roles="*">
+      <siteMapNode url="Staff\UploadAttendance.aspx" title="Upload Attendance"  description="" roles="Admin,HOD,Faculty" />
+      <siteMapNode url="Staff\ManageAttendance.aspx" title="Manage Attendance"  description="" roles="Admin,HOD,Faculty" />
+    </siteMapNode>
+    <siteMapNode url="Sessional.aspx" title="Sessional Marks"  description="" roles="*">
+      <siteMapNode url="Staff\UploadSessMarks.aspx" title="Upload Marks"  description="" roles="Admin,HOD,Faculty" />
+      <siteMapNode url="Staff\ManageSessMarks.aspx" title="Manage Marks"  description="" roles="Admin,HOD,Faculty" />
+    </siteMapNode>
+    <siteMapNode url="Semester.aspx" title="Semester Results"  description="" />
+    <siteMapNode url="Admin\Administrator.aspx" title="Create New User"  description="" roles="Admin" />
+    <siteMapNode url="Logout.aspx" title="Log Out"  description="" />
+  </siteMapNode>
+</siteMap>

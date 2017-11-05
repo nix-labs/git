@@ -1,0 +1,91 @@
+﻿html, body 
+{
+	background-color: #ffffff;
+	color: #000000;
+	font: normal 90%/1.8em 'Lucida Grande', Verdana, Geneva, Lucida, Helvetica, Arial, sans-serif;
+	margin: 0;
+	height: 100%;
+}
+
+p
+{
+    font-size: 1.8em;
+    line-height: 1.8em;
+    margin: 1.1em 0em 1.1em 0em;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: top;
+    text-transform: capitalize;
+    color: blue;
+}
+
+#header
+{
+    background-image: url(Images/head.jpg);
+    height: 67px;
+    width: 785px;
+    vertical-align: top;
+    background-repeat: no-repeat;
+    border-right: navy thick solid;
+    border-top: navy thick solid;
+    border-left: navy thick solid;
+    border-bottom: navy thick solid;
+}
+
+#google
+{
+    vertical-align: top;
+    background-color: navy;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-right: navy thin solid;
+    border-top: navy thin solid;
+    border-left: navy thin solid;
+    border-bottom: navy thin solid;
+   
+}
+
+#sidebar
+{
+    font-weight: bold;
+    font-size: 1.1em;
+    color: white;
+    text-align: center;
+}
+
+#Menu a
+{
+    background: white url(Images/glossyback.gif) repeat-x bottom left;
+    font: bold 1.0em 'Lucida Grande', Verdana, Geneva, Lucida, Helvetica, Arial, sans-serif;
+    color: white;
+    display: block;
+    width: auto;
+    padding: 3px 0;
+    padding-left: 0px;
+    text-decoration: none;
+    margin-right:auto;
+    text-align:left;
+}
+
+
+ html #Menu a{ 
+width: 160px;
+}
+
+#Menu a:visited, #Menu a:active
+{
+    color: white;
+}
+
+#Menu a:hover
+{
+    background-image: url(Images/glossyback2.gif);
+}
+
+#login
+{
+    font-weight: normal;
+    font-size: 1.0em;
+}
+
