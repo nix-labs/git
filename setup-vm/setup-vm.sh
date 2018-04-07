@@ -31,6 +31,7 @@ sudo php5enmod mcrypt
 sudo git config --global user.email "dev@ubuntu"
 sudo git config --global user.name "developer"
 sudo git clone https://github.com/nix-labs/git.git
+sudo git clone https://github.com/nix-labs/npshop.git
 
 ## Permissions
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
