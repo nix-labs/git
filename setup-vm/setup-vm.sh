@@ -15,8 +15,7 @@ sudo apt-get install -y default-jdk firefox apache2 mysql-server-5.5 mysql-clien
 
 ## Configs
 
-mkdir /home/dev/webroot
-mkdir /home/dev/workspace
+mkdir sites webroot workspace
 
 #Apache
 sudo a2enmod rewrite
@@ -30,8 +29,8 @@ sudo php5enmod mcrypt
 #Git
 sudo git config --global user.email "dev@ubuntu"
 sudo git config --global user.name "developer"
-sudo git clone https://github.com/nix-labs/git.git
-sudo git clone https://github.com/nix-labs/npshop.git
+sudo git clone https://github.com/nix-labs/git.git /home/dev
+sudo git clone https://github.com/nix-labs/npshop.git /home/dev/sites
 
 ## Permissions
 sudo sed -i 's/www-data/dev/g' /etc/apache2/envvars
